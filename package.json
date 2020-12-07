@@ -1,0 +1,28 @@
+{
+  "name": "christmas-gift-swap-",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jallan07/christmas-gift-swap-.git"
+  },
+  "keywords": [],
+  "author": "Josh Allan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jallan07/christmas-gift-swap-/issues"
+  },
+  "homepage": "https://github.com/jallan07/christmas-gift-swap-#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
