@@ -1,1 +1,10 @@
+#addMoreNames {
+  font-size: 18px;
+  font-weight: 800;
+  color: #4b92fb;
+  cursor: pointer;
+}
 
+#addMoreNames:hover {
+  text-decoration: solid underline;
+}
