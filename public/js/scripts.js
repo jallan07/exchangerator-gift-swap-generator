@@ -1,11 +1,18 @@
+// check for document ready
 $(document).ready(function () {
+  // ================
+  // variable declarations
+  // ================
   const submitBtn = $('#nameSubmit');
   const formContainer = $('#formContainer');
   const addMoreBtn = $('#addMoreNames');
   const participants = [];
   let count = 4;
 
-  // on "add more names" button click
+  // ================
+  // event listeners
+  // ================
+  // "add more names" button
   addMoreBtn.on('click', () => {
     count++;
     console.log('test');
@@ -22,22 +29,33 @@ $(document).ready(function () {
   `);
   });
 
-  // on form submit
+  // submit button
   submitBtn.on('click', function (e) {
     console.log('test');
     // store the individual names from the input fields
     for (let i = 1; i <= count; i++) {
+      let input = $(`#inputLarge${i}`).val().trim();
+      if (!input) break;
       // push each entry into the participants array
-      participants.push($(`#inputLarge${i}`).val().trim());
+      participants.push(input);
     }
-    // return the participants array for use elsewhere
     console.log(participants);
+    getMatches(participants);
+    // return the participants array for use elsewhere
     return participants;
   });
 
-  console.log(participants);
+  // ================
+  // helper functions
+  // ================
 
+  // find a match for each of the participants
+  const getMatches = (participants) => {
+    console.log(participants);
+  };
+
+  // each participant must be randomly matched with another participant
   // each participant can only draw one name
-  // no one can be drawn more than once
-  // no one can draw their own name
+  // no participant can be drawn more than once
+  // no participant can draw their own name
 });
