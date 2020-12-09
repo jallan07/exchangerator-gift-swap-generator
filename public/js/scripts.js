@@ -10,22 +10,32 @@ $(document).ready(function () {
     count++;
     console.log('test');
     formContainer.append(`
-    <div class="form-group">
-      <input
-        class="form-control form-control-lg"
-        type="text"
-        placeholder="Enter name ${count}"
-        id="inputLarge"
-      />
-    </div>
-    `);
+  <div class="form-group">
+    <input
+      class="form-control form-control-lg name-field"
+      type="text"
+      placeholder="Enter name ${count}"
+      id="inputLarge${count}"
+      data-name="${count}"
+    />
+  </div>
+  `);
   });
 
   // on form submit
   submitBtn.on('click', function (e) {
-    e.preventDefault();
     console.log('test');
+    // store the individual names from the input fields
+    for (let i = 1; i <= count; i++) {
+      // push each entry into the participants array
+      participants.push($(`#inputLarge${i}`).val().trim());
+    }
+    // return the participants array for use elsewhere
+    console.log(participants);
+    return participants;
   });
+
+  console.log(participants);
 
   // each participant can only draw one name
   // no one can be drawn more than once
