@@ -52,10 +52,10 @@ $(document).ready(function () {
   // find a match for each of the participants
   const getMatches = (participants) => {
     console.log(participants);
-  };
 
-  // each participant must be randomly matched with another participant
-  // each participant can only draw one name
-  // no participant can be drawn more than once
-  // no participant can draw their own name
+    // each participant must be randomly matched with another participant
+    // each participant can only draw one name
+    // no participant can be drawn more than once
+    // no participant can draw their own name
+  };
 });
