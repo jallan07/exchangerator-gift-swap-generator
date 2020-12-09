@@ -2,9 +2,6 @@
 const express = require('express');
 const app = express();
 
-// define the port
-const PORT = process.env.PORT || 3030;
-
 // view engine
 app.set('view engine', 'ejs');
 
@@ -16,6 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // use the routes file
 require('./routes/html')(app);
+
+// define the port
+const PORT = process.env.PORT || 3030;
 
 // set the server to listen on a specific port
 app.listen(PORT, () => {
