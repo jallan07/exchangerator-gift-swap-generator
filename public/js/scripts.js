@@ -6,8 +6,8 @@ $(document).ready(function () {
   const submitBtn = $('#nameSubmit');
   const formContainer = $('#formContainer');
   const addMoreBtn = $('#addMoreNames');
-  const participants = [];
-  let count = 4;
+  const participants = []; // user input in the name fields will get stored here
+  let count = 4; // used to set numbers for additional name fields
 
   // ================
   // event listeners
@@ -17,15 +17,15 @@ $(document).ready(function () {
     count++;
     console.log('test');
     formContainer.append(`
-  <div class="form-group">
-    <input
-      class="form-control form-control-lg name-field"
-      type="text"
-      placeholder="Enter name ${count}"
-      id="inputLarge${count}"
-      data-name="${count}"
-    />
-  </div>
+      <div class="form-group">
+        <input
+          class="form-control form-control-lg name-field"
+          type="text"
+          placeholder="Enter name ${count}"
+          id="inputLarge${count}"
+          data-name="${count}"
+        />
+      </div>
   `);
   });
 
@@ -51,7 +51,8 @@ $(document).ready(function () {
 
   // find a match for each of the participants
   const getMatches = (participants) => {
-    console.log(participants);
+    // prints each name out individually
+    participants.forEach((participant) => console.log(participant));
 
     // each participant must be randomly matched with another participant
     // each participant can only draw one name
