@@ -72,20 +72,28 @@ $(document).ready(function () {
   // loop through the array and build objects with 2 people in each people
   const buildPairs = (array) => {
     for (let i = 0; i < array.length; i++) {
+      // set the giver variable to the current index
       currentIndex = array[i];
+      // set the nextIndex to the next item in the array
       nextIndex = array[i + 1];
       let obj = {
-        person1: currentIndex,
-        person2: function () {
-          if (nextIndex === undefined) {
-            return array[0];
-          } else {
-            return nextIndex;
-          }
-        }
+        giver: currentIndex,
+        receiver: assignReceiver(array)
       };
 
       console.log(obj);
+    }
+  };
+
+  // helper function to assign the receiver
+  const assignReceiver = (array) => {
+    // if the nextIndex is undefined (meaning it's the last item in the shuffled array), then set its coordinating receiver to the first item in the array
+    if (nextIndex === undefined) {
+      return array[0];
+    }
+    // otherwise, set it to the next item in the array
+    else {
+      return nextIndex;
     }
   };
 
