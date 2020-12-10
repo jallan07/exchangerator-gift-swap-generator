@@ -7,8 +7,11 @@ $(document).ready(function () {
   const submitBtn = $('#nameSubmit');
   const formContainer = $('#formContainer');
   const addMoreBtn = $('#addMoreNames');
+  const masthead = $('.masthead');
   // participants => user input in the name fields get stored here
   const participants = [];
+  // pairs => after user submits their list of names, the shuffled and matched names will be stored in an array of objects here
+  const pairs = [];
   // count => used to set numbers for additional name fields
   let count = 4;
 
@@ -18,7 +21,6 @@ $(document).ready(function () {
   // "add more names" button event listener
   addMoreBtn.on('click', () => {
     count++;
-    console.log('test');
     formContainer.append(`
       <div class="form-group">
         <input
@@ -34,7 +36,6 @@ $(document).ready(function () {
 
   // submit button event listener
   submitBtn.on('click', function (e) {
-    console.log('test');
     // store the individual names from the input fields
     for (let i = 1; i <= count; i++) {
       let input = $(`#inputLarge${i}`).val().trim();
@@ -80,8 +81,19 @@ $(document).ready(function () {
         giver: currentIndex,
         receiver: assignReceiver(array)
       };
+      // console.log(obj);
+      // push the giver/receiver pairs to the pairs array
+      pairs.push(obj);
+    }
+    renderPairs(pairs);
+    console.log({ pairs });
+  };
 
-      console.log(obj);
+  const renderPairs = (array) => {
+    for (let i = 0; i < array.length; i++) {
+      masthead.append(
+        `<p>${array[i].giver} is buying for ${array[i].receiver}</p>`
+      );
     }
   };
 
