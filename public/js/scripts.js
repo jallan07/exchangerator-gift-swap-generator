@@ -36,6 +36,7 @@ $(document).ready(function () {
 
   // submit button event listener
   submitBtn.on('click', function (e) {
+    e.preventDefault();
     // store the individual names from the input fields
     for (let i = 1; i <= count; i++) {
       let input = $(`#inputLarge${i}`).val().trim();
