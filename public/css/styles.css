@@ -8,3 +8,9 @@
 #addMoreNames:hover {
   text-decoration: solid underline;
 }
+
+@media only screen and (max-width: 1000px) {
+  .arrow {
+    display: none;
+  }
+}
