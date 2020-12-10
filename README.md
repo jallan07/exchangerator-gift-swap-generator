@@ -21,10 +21,13 @@ Are you hosting a gift exchange this year? Take the hassle out of it and automat
 
 ## **Technologies Used**
 
-- HTML/CSS/Javascript
+- HTML/CSS
+- Javascript
+- jQuery Library
 - Node.js & Express.js
 - EJS Template Engine
 - Bootstrap CSS Framework
+- Heroku Deployment
 
 ---
 
