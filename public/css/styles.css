@@ -13,6 +13,10 @@ html {
   text-decoration: solid underline;
 }
 
+.error {
+  color: red;
+}
+
 @media only screen and (max-width: 1000px) {
   .arrow {
     display: none;

@@ -7,7 +7,9 @@ $(document).ready(function () {
   const submitBtn = $('#nameSubmit');
   const formContainer = $('#formContainer');
   const addMoreBtn = $('#addMoreNames');
-  const masthead = $('.masthead');
+  // const masthead = $('.masthead');
+  const nameForm = $('.name-form');
+  const rightCol = $('#right-column');
   // participants => user input in the name fields get stored here
   const participants = [];
   // pairs => after user submits their list of names, the shuffled and matched names will be stored in an array of objects here
@@ -35,8 +37,9 @@ $(document).ready(function () {
   });
 
   // submit button event listener
-  submitBtn.on('click', function (e) {
+  submitBtn.on('click', (e) => {
     e.preventDefault();
+
     // store the individual names from the input fields
     for (let i = 1; i <= count; i++) {
       let input = $(`#inputLarge${i}`).val().trim();
@@ -44,7 +47,23 @@ $(document).ready(function () {
       // push each entry into the participants array
       participants.push(input);
     }
+    // error handling for empty submissions
+    if (participants.length < 2) {
+      setTimeout(function () {
+        rightCol.prepend(
+          `<div class="error mb-3"><h5>You must enter at least 2 names for Exchangerator to work properly.</h5></div>`
+        );
+        setTimeout(function () {
+          $('.error').fadeOut();
+        }, 7000);
+      }, 100);
+      return;
+    }
+    // pass in the participants to the shuffle function
     const shuffledArr = shuffleParticipants(participants);
+    // hide the form inputs
+    nameForm.hide();
+    // build pairs based off the shuffled array
     buildPairs(shuffledArr);
     // return the participants array for use elsewhere
     return participants;
@@ -91,14 +110,18 @@ $(document).ready(function () {
   };
 
   const renderPairs = (array) => {
+    rightCol.append(`<div class="results-container"></div>`);
     for (let i = 0; i < array.length; i++) {
-      masthead.append(
-        `<p>${array[i].giver.toUpperCase()} 
+      rightCol.append(
+        `<h4 class="ml-3 mt-4">${array[i].giver.toUpperCase()} 
         is buying for 
         ${array[i].receiver.toUpperCase()}
-        </p>`
+        </h4>`
       );
     }
+    rightCol.append(
+      `<a href="/"><button type="submit" class="btn btn-primary ml-3 mt-3 id="resetBtn">Reset</button></a>`
+    );
   };
 
   // helper function to assign the receiver
@@ -112,22 +135,4 @@ $(document).ready(function () {
       return nextIndex;
     }
   };
-
-  // push those objects to the final array, and push to the ejs page template
-
-  // *! RULES **
-  // there must be an even number of participants
-  // each participant must be randomly matched with another participant
-  // each participant can only draw one name
-  // no participant can be drawn more than once
-  // no participant can draw their own name
 });
-
-/* Logic
-DONE - Get peoples names
-DONE - Store them in an array
-Shuffle the array
-Reverse the array 
-Loop through the array and build objects with 2 people in each object
-Push those objects to the final array, and push to the ejs page template
-*/
