@@ -93,7 +93,10 @@ $(document).ready(function () {
   const renderPairs = (array) => {
     for (let i = 0; i < array.length; i++) {
       masthead.append(
-        `<p>${array[i].giver} is buying for ${array[i].receiver}</p>`
+        `<p>${array[i].giver.toUpperCase()} 
+        is buying for 
+        ${array[i].receiver.toUpperCase()}
+        </p>`
       );
     }
   };
