@@ -1,12 +1,16 @@
 // app dependencies
 const express = require('express');
 const app = express();
+const compression = require('compression');
 
 // view engine
 app.set('view engine', 'ejs');
 
 // static css
 app.use(express.static('public'));
+
+// compression middleware
+app.use(compression());
 
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
